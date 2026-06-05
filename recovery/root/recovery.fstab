@@ -1,0 +1,14 @@
+# Infinix X6836 fstab — MT6768, Android 13, A/B
+/boot           emmc    /dev/block/by-name/boot                   flags=slotselect;avb=boot
+/vendor_boot    emmc    /dev/block/by-name/vendor_boot            flags=slotselect;avb=vbmeta
+/init_boot      emmc    /dev/block/by-name/init_boot              flags=slotselect;avb=init_boot
+/system         erofs   /dev/block/mapper/system                  ro,wait,slotselect,avb=vbmeta,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey
+/vendor         erofs   /dev/block/mapper/vendor                  ro,wait,slotselect,avb=vbmeta_vendor,logical,first_stage_mount
+/product        erofs   /dev/block/mapper/product                 ro,wait,slotselect,avb=vbmeta_system,logical,first_stage_mount
+/data           f2fs    /dev/block/by-name/userdata               flags=fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized;wrappedkey
+/metadata       ext4    /dev/block/by-name/metadata               flags=first_stage_mount;formattable
+/misc           emmc    /dev/block/by-name/misc
+/persist        ext4    /dev/block/by-name/persist
+/tranfs         ext4    /dev/block/by-name/tranfs
+/sdcard1        vfat    /dev/block/mmcblk1p1                      flags=removable;storage;display="MicroSD"
+/usb_otg        vfat    /dev/block/sda1                           flags=removable;storage;display="USB OTG"
