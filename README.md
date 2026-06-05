@@ -17,10 +17,10 @@
 - ✅ BoardConfig.mk (все параметры из реального vendor_boot)
 - ✅ recovery.fstab (erofs/f2fs из реальных данных)
 - ✅ dtb.img в prebuilt/ (извлечён из vendor_boot)
-- ❌ kernel — нужно извлечь вручную
-- ❌ dtbo.img — нужно извлечь из boot.img
+- ✅ kernel — извлечно
+- ✅ dtbo.img — извлечено
 
-## Извлечение kernel из vendor_boot
+## Извлечение kernel из vendor_boot (действия требуют рут!)
 
 На телефоне в Termux:
 ```bash
@@ -35,13 +35,12 @@ magiskboot unpack vendor_boot.img
 
 Положить в prebuilt/kernel
 
-## Извлечение dtbo из boot.img
+## Извлечение dtbo из boot.img (требует рут!)
 ```bash
 su -c "dd if=/dev/block/by-name/boot_a of=/sdcard/boot.img"
 magiskboot unpack boot.img
 # Появится dtbo
 ```
-Положить в prebuilt/dtbo.img
 
 ## Сборка через GitHub Actions
 
